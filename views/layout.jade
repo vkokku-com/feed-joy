@@ -3,7 +3,6 @@ html
   head
     title my jade template
     link(rel='stylesheet', href='stylesheets/bootstrap.css')
-    link(rel='stylesheet', href='stylesheets/bootstrap-sandstone-theme.min.css')
   body
     nav.navbar.navbar-inverse(style="margin-bottom:0px")
       .container
@@ -13,7 +12,7 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='#') PC Repairs
+          a.navbar-brand(href='/home') Express Site
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li
@@ -21,6 +20,10 @@ html
             li
               a(href='/about') About
             li
-              a(href='/services') Services
+              a(href='/contact') Contact us
         // /.nav-collapse
     block content
+    hr
+    footer
+      .container
+        p © 2015 Company, Inc.
