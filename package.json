@@ -4,7 +4,8 @@
   "description": "A simple server created by express framework serving html",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
   },
   "author": "Venkata Saikiran Kokku",
   "license": "ISC",
@@ -12,7 +13,11 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "jade": "^1.11.0",
+    "mongoose": "^5.8.11",
     "nodemailer": "^2.4.2",
     "pug": "^2.0.0-beta3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
