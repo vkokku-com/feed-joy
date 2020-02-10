@@ -1,8 +1,6 @@
-
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-var ngo_details = new Schema({
+var Ngo_Details_Schema = new mongoose.Schema({
     name: String,
     registration_number:String,
     phone_num: { type: String, unique: true},
@@ -18,6 +16,7 @@ var ngo_details = new Schema({
     landmark:String,
     photo:String,
     testimonial:String
-});
+},{timestamps : true});
 
-module.exports =ngo_details;
+ var Ngo_Details =mongoose.model('ngo_detail',Ngo_Details_Schema);
+ module.exports =Ngo_Details;
