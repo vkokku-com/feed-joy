@@ -101,7 +101,6 @@ router.get('/transactions', async function (req, res, next) {
             })
         }
 
-
         res.send(_trans);
     }
     catch (error) {
@@ -126,7 +125,7 @@ router.post('/transactions/change_status', async function (req, res, next) {
             res.send(_updated_transaction);
         }
         else {
-            next('Transaction id and Status is required');
+            next({message:'Transaction id and Status is required'});
         }
     }
     catch (error) {
@@ -137,12 +136,43 @@ router.post('/transactions/change_status', async function (req, res, next) {
 
 router.post('/transactions/rating', async function (req, res, next) {
     try {
-        //rating 
+
         res.send(_trans);
     }
     catch (error) {
         next(error);
     }
 });
+
+router.get('/check_phone_num', async function (req, res, next) {
+    try {
+        let _phone_num_status={};
+        if(req.query.phone_num){
+            let _user_detail_cnt = await User_Details.find({ phone_num: req.query.phone_num});
+            if(_user_detail_cnt.length >0){
+                _phone_num_status.registration_detail ="DONAR"
+                res.send(_phone_num_status);  
+            }
+            else {
+                let _ngo_detail_cnt = await Ngo_Deatails.find({ phone_num: req.query.phone_num });
+                if(_ngo_detail_cnt.length >0){
+                    _phone_num_status.registration_detail ="DONEE"
+                    res.send(_phone_num_status);
+                }
+                else{
+                    next({message:'Phone Number is not Found'});    
+                }
+            }
+        }
+        else{
+            next({message:'Phone Number is required'});
+        }        
+    }
+    catch (error) {
+        next(error);
+    }
+});
+
+
 
 module.exports = router;
