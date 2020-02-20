@@ -4,7 +4,7 @@ var Ngo_Details_Schema = new mongoose.Schema({
     name: String,
     registration_number:String,
     phone_num: { type: String, unique: true},
-    type:String,
+    type:{type:Boolean, default:false},
     email:String,
     address:String,
     fb_link:String,
