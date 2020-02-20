@@ -5,7 +5,7 @@ var Transactions_Schema = new mongoose.Schema({
     description: String,
     location: String,
     address: String,
-    transaction_num: { type: String, unique: true},
+    transaction_num: { type: String},
     user_id: {required:true,type: 'ObjectId', ref: 'User_Details'},
     ngo_id: {required:true, type: 'ObjectId', ref: 'Ngo_Deatails'},
     transaction_accepted:{type:Boolean, default:false},
