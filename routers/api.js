@@ -36,10 +36,10 @@ router.get('/ngo_details', async function (req, res, next) {
     try {
         let _ngo_details;
         if(req.query.phone_num){
-            _ngo_details = await Ngo_Deatails.find({phone_num:req.query.phone_num})
+            _ngo_details = await Ngo_Deatails.find({phone_num:req.query.phone_num});
         }
         else{
-            _ngo_details = await Ngo_Deatails.find({})
+            _ngo_details = await Ngo_Deatails.aggregate([{ $sort:{ type:-1, rating : -1 } }])
         }
         res.send(_ngo_details);
     }
